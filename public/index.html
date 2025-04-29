@@ -4,9 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat mongo DB</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
   </head>
   <body>
     <h1>Teste de front</h1>
     <h2>Outro teste de front</h2>
+    <form id="chat">
+      <input type="text" name="username" />
+      <br />
+      <input multiple type="text" name="message" />
+      <br />
+      <button>Enviar</button>
+    </form>
+    <script>
+      src = "socket.io/socket.io.js";
+    </script>
+    <script>
+      //conexão com o socket.io do backend
+      const socket = io("http://localhost:3000");
+      //Captura os dados de usuário e da mensagem do usuário
+      $("#chat").submit(function (event) {
+        event.preventDefault();
+        // alert("Deu certo");
+        // Recupera os dados de usuário e mensagem
+        let usuario = $("input[name=username]").val();
+        let mensagem = $("input[name=message]").val();
+        console.log("Teste das variaveis" + usuario);
+        console.log("Teste das variaveis" + mensagem);
+      });
+    </script>
   </body>
 </html>
